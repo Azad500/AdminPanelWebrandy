@@ -1,0 +1,22 @@
+@import "../../Scss/measure";
+
+.container {
+  width: 100%;
+  @include responsive1024 {
+    display: flex;
+    justify-content: center;
+  }
+  .leftSideElement {
+    display: none;
+    @include responsive1024 {
+      display: block;
+      width: 20%;
+    }
+  }
+  .informationsElement {
+    width: 100%;
+    @include responsive1024 {
+      width: 80%;
+    }
+  }
+}

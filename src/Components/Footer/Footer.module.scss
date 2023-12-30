@@ -1,0 +1,45 @@
+@import "../../Scss/measure";
+
+* {
+  box-sizing: border-box;
+}
+.FooterSection {
+  // padding-bottom: 70px;
+  h3 {
+    padding: 44px 0;
+  }
+  form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    @include responsive728 {
+      grid-template-columns: 4fr 1fr;
+      flex-direction: column-reverse;
+      div:nth-child(1) {
+        order: 1;
+      }
+    }
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+
+      label {
+        font-weight: 600;
+        font-family: "Inter", sans-serif;
+      }
+      input {
+        display: flex;
+        height: 48px;
+        padding: 11px 12px;
+        align-items: center;
+        gap: 10px;
+        align-self: stretch;
+        border-radius: 5px;
+        border: 1px solid #d9d9d9;
+        background: #fff;
+        width: 90%;
+      }
+    }
+  }
+}

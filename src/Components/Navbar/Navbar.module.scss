@@ -1,0 +1,42 @@
+@import "../../Scss/measure";
+* {
+  margin: 0;
+  padding: 0;
+}
+.navbar {
+  padding: 14px 20px;
+  background-color: #fff;
+  ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    li:nth-child(1) {
+      @include responsive1024 {
+        display: none;
+      }
+    }
+    .WebrandyLogo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      img {
+        width: 30px;
+      }
+      h1 {
+        a {
+          text-decoration: none;
+          color: black;
+          font-weight: 600;
+          font-family: "Lexend", sans-serif;
+        }
+      }
+    }
+    .ProfilePhotos {
+      img {
+        width: 50px;
+        border-radius: 25px;
+      }
+    }
+  }
+}

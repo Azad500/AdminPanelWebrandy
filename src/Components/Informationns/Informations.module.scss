@@ -1,0 +1,30 @@
+@import "../../Scss/measure";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.container {
+  width: 95%;
+  margin: auto;
+  p {
+    margin: auto;
+    padding: 20px;
+    color: #212121;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    @include responsive400 {
+      font-size: 16px;
+    }
+  }
+  .wrapper {
+    padding: 24px;
+    background-color: #ffffff;
+    margin: auto;
+    border-radius: 10px;
+  }
+}
