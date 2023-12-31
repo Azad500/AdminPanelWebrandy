@@ -92,7 +92,7 @@ export default function FileInputWithPreview({
             {AllInformations.SameParts.ChooseFile}
           </button>
           {selectedFiles[index] && (
-            <div>
+            <div className={styles.textsAndImgAndButton}>
               <p>
                 {AllInformations.SameParts.SelectedFile}:{" "}
                 {selectedFiles[index]?.name}

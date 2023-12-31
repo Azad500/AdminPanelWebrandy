@@ -6,7 +6,6 @@ export default function Navbar() {
     <nav className={styles.navbar}>
       <ul>
         <li>
-          {/* <img src={AllInformationsJs.Navbar.BurgerIcon} alt="" /> */}
           <HamburgerBar />
         </li>
         <li className={styles.WebrandyLogo}>

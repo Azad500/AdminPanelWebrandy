@@ -66,6 +66,12 @@ export default function LeftAside() {
   return (
     <section className={styles.container}>
       <div className={styles.wrapper}>
+        <div className={styles.webrandyLogo}>
+          <img src={AllInformations.Navbar.WebrandyLogo} alt="Webrandy Logo" />
+          <h1>
+            <a href="/">{AllInformations.Navbar.WebrandyTitle}</a>
+          </h1>
+        </div>
         <div className={styles.headerText}>
           <p>{AllInformations.HamburgerBar.MainPageText}</p>
         </div>

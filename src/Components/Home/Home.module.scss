@@ -11,12 +11,16 @@
     @include responsive1024 {
       display: block;
       width: 20%;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
   }
   .informationsElement {
     width: 100%;
     @include responsive1024 {
       width: 80%;
+      margin-left: 20%;
     }
   }
 }

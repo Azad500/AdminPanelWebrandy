@@ -6,11 +6,15 @@
 .navbar {
   padding: 14px 20px;
   background-color: #fff;
+  position: relative;
   ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
     list-style: none;
+    @include responsive1024 {
+      justify-content: end;
+    }
     li:nth-child(1) {
       @include responsive1024 {
         display: none;
@@ -20,6 +24,9 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      @include responsive1024 {
+        display: none;
+      }
       img {
         width: 30px;
       }
