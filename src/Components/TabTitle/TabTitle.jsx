@@ -1,39 +1,21 @@
-import { useState } from "react";
 import AllInformationsJs from "../../../informations";
 import styles from "../TabTitle/TabTitle.module.scss";
 import FileInputWithPreview from "./ChooseFile";
-import { useDispatch } from "react-redux";
-import { postCounterItem } from "../../counter/counterSlice";
 
-export default function TabTitle({ contents }) {
-  const [keywords, setKeywords] = useState([{ id: 1, value: "" }]);
-  const handleAddInput = (e) => {
-    e.preventDefault();
-    setKeywords((prevKeywords) => [
-      ...prevKeywords,
-      { id: prevKeywords.length + 1, value: "" },
-    ]);
-  };
-  const handleRemoveInput = (id) => {
-    setKeywords((prevKeywords) =>
-      prevKeywords.filter((keyword) => keyword.id !== id)
-    );
-  };
-  // ----------------------------------
-  const [inputValue, setInputValue] = useState({ tabTitle: "" });
-  const dispatch = useDispatch();
-  const handleInput = (e) => {
-    setInputValue({ ...inputValue, [e.target.name]: e.target.value });
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(postCounterItem(inputValue));
-    setInputValue({ tabTitle: "" });
-    console.log(inputValue);
-  };
+export default function TabTitle({
+  tabTitle,
+  setTabTitle,
+  keywords,
+  setKeywords,
+  handleAddInput,
+  handleRemoveInput,
+  setFavIconImg,
+  setLogoLightImg,
+  setLogoDarkImg,
+}) {
   return (
     <section className={styles.informations}>
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <form className={styles.form}>
         <div>
           <label htmlFor="tabTitle">
             {AllInformationsJs.TabTitle.TabTitleText}
@@ -43,11 +25,10 @@ export default function TabTitle({ contents }) {
             type="text"
             id="tabTitle"
             name="tabTitle"
-            value={inputValue.tabTitle}
-            onChange={handleInput}
+            value={tabTitle}
+            onChange={(e) => setTabTitle(e.target.value)}
             placeholder={AllInformationsJs.Navbar.WebrandyTitle}
           />
-          <button>send request</button>
         </div>
         <div>
           <label htmlFor="metaTagKeywords">
@@ -60,6 +41,7 @@ export default function TabTitle({ contents }) {
                 type="text"
                 name="keywords"
                 id="metaTagKeywords"
+                value={keyword.value}
                 onChange={(e) => {
                   const updatedKeywords = keywords.map((k) =>
                     k.id === keyword.id ? { ...k, value: e.target.value } : k
@@ -84,7 +66,11 @@ export default function TabTitle({ contents }) {
         </button>
       </form>
       <div>
-        <FileInputWithPreview />
+        <FileInputWithPreview
+          setFavIconImg={setFavIconImg}
+          setLogoLightImg={setLogoLightImg}
+          setLogoDarkImg={setLogoDarkImg}
+        />
       </div>
     </section>
   );

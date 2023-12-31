@@ -3,7 +3,28 @@ import stylesFooter from "../Footer/Footer.module.scss";
 import styles from "../TabTitle/ChooseFile.module.scss";
 import AllInformationsJs from "../../../informations";
 
-export default function Footer() {
+export default function Footer({
+  mail1,
+  mail2,
+  phoneNumber1,
+  phoneNumber2,
+  phoneNumber3,
+  address,
+  instagramLink,
+  facebookLink,
+  linkedinLink,
+  youtubeLink,
+  setMail1,
+  setMail2,
+  setPhoneNumber1,
+  setPhoneNumber2,
+  setPhoneNumber3,
+  setAddress,
+  setInstagramLink,
+  setFacebookLink,
+  setLinkedinLink,
+  setYoutubeLink,
+}) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewURL, setPreviewURL] = useState(null);
   const fileInputRef = useRef(null);
@@ -68,12 +89,14 @@ export default function Footer() {
             )}
           </div>
         </div>
-        <div>
+        <div className={stylesFooter.inputsAndTexts}>
           <div>
             <label htmlFor="Mail1">{AllInformationsJs.Footer.Mail1}</label>
             <input
               type="text"
               id="Mail1"
+              value={mail1}
+              onChange={(e) => setMail1(e.target.value)}
               placeholder={AllInformationsJs.Navbar.WebrandyTitle}
             />
           </div>
@@ -82,6 +105,8 @@ export default function Footer() {
             <input
               type="text"
               id="Mail2"
+              value={mail2}
+              onChange={(e) => setMail2(e.target.value)}
               placeholder={AllInformationsJs.Navbar.WebrandyTitle}
             />
           </div>
@@ -92,6 +117,8 @@ export default function Footer() {
             <input
               type="text"
               id="PhoneNumber1"
+              value={phoneNumber1}
+              onChange={(e) => setPhoneNumber1(e.target.value)}
               placeholder={AllInformationsJs.Navbar.WebrandyTitle}
             />
           </div>
@@ -102,6 +129,8 @@ export default function Footer() {
             <input
               type="text"
               id="PhoneNumber2"
+              value={phoneNumber2}
+              onChange={(e) => setPhoneNumber2(e.target.value)}
               placeholder={AllInformationsJs.Navbar.WebrandyTitle}
             />
           </div>
@@ -112,6 +141,8 @@ export default function Footer() {
             <input
               type="text"
               id="PhoneNumber3"
+              value={phoneNumber3}
+              onChange={(e) => setPhoneNumber3(e.target.value)}
               placeholder={AllInformationsJs.Navbar.WebrandyTitle}
             />
           </div>
@@ -120,6 +151,8 @@ export default function Footer() {
             <input
               type="text"
               id="Adress"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
               placeholder={AllInformationsJs.Navbar.WebrandyTitle}
             />
           </div>
@@ -130,6 +163,8 @@ export default function Footer() {
             <input
               type="text"
               id="Instagramlink"
+              value={instagramLink}
+              onChange={(e) => setInstagramLink(e.target.value)}
               placeholder={AllInformationsJs.Navbar.WebrandyTitle}
             />
           </div>
@@ -140,6 +175,8 @@ export default function Footer() {
             <input
               type="text"
               id="Facebooklink"
+              value={facebookLink}
+              onChange={(e) => setFacebookLink(e.target.value)}
               placeholder={AllInformationsJs.Navbar.WebrandyTitle}
             />
           </div>
@@ -150,6 +187,8 @@ export default function Footer() {
             <input
               type="text"
               id="Linkedinlink"
+              value={linkedinLink}
+              onChange={(e) => setLinkedinLink(e.target.value)}
               placeholder={AllInformationsJs.Navbar.WebrandyTitle}
             />
           </div>
@@ -160,6 +199,8 @@ export default function Footer() {
             <input
               type="text"
               id="Youtubelink"
+              value={youtubeLink}
+              onChange={(e) => setYoutubeLink(e.target.value)}
               placeholder={AllInformationsJs.Navbar.WebrandyTitle}
             />
           </div>

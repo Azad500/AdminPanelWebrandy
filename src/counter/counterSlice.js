@@ -6,12 +6,11 @@ const initialState = {
   error: null,
 };
 
+// GET
 export const fetchCounter = createAsyncThunk(
   "counter/fetchCounter",
   async () => {
-    const response = await fetch(
-      "http://terlan125-001-site1.ftempurl.com/api/information"
-    );
+    const response = await fetch("http://localhost:3000/posts");
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
@@ -19,20 +18,17 @@ export const fetchCounter = createAsyncThunk(
   }
 );
 
-export const postCounterItem = createAsyncThunk(
-  "counter/postCounterItem",
-  async (newItem) => {
-    const response = await fetch(
-      "http://terlan125-001-site1.ftempurl.com/api/information",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newItem),
-      }
-    ).then((response) => response.json());
+// POST
+export const postContent = createAsyncThunk(
+  "counter/postContent",
+  async (postData) => {
+    const response = await fetch("http://localhost:3000/posts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(postData),
+    });
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
@@ -45,30 +41,28 @@ export const counterSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder
-      .addCase(fetchCounter.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(fetchCounter.fulfilled, (state, action) => {
-        state.contents = action.payload;
-        state.isLoading = false;
-      })
-      .addCase(fetchCounter.rejected, (state, action) => {
-        state.error = action.error.message;
-        state.isLoading = false;
-      })
-      // --------------///------------///-------
-      .addCase(postCounterItem.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(postCounterItem.fulfilled, (state, action) => {
-        state.contents.push(action.payload);
-        state.isLoading = false;
-      })
-      .addCase(postCounterItem.rejected, (state, action) => {
-        state.error = action.error.message;
-        state.isLoading = false;
-      });
+    // GET
+    builder.addCase(fetchCounter.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(fetchCounter.fulfilled, (state, action) => {
+      state.contents = action.payload;
+      state.isLoading = false;
+    });
+    builder.addCase(fetchCounter.rejected, (state, action) => {
+      state.error = action.error.message;
+      state.isLoading = false;
+    });
+    // POST
+    builder.addCase(postContent.pending, (state) => {
+      // state.isLoading = true;
+    });
+    builder.addCase(postContent.fulfilled, (state, action) => {
+      state.contents.push(action.payload);
+    });
+    builder.addCase(postContent.rejected, (state, action) => {
+      state.error = action.error.message;
+    });
   },
 });
 

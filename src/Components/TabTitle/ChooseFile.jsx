@@ -2,7 +2,11 @@ import React, { useState, useRef } from "react";
 import styles from "../TabTitle/ChooseFile.module.scss";
 import AllInformations from "../../../informations";
 
-export default function FileInputWithPreview() {
+export default function FileInputWithPreview({
+  setFavIconImg,
+  setLogoLightImg,
+  setLogoDarkImg,
+}) {
   const [selectedFiles, setSelectedFiles] = useState([null, null, null]);
   const [previewURLs, setPreviewURLs] = useState([null, null, null]);
   const fileInputRefs = useRef([
@@ -19,6 +23,8 @@ export default function FileInputWithPreview() {
       const reader = new FileReader();
 
       reader.onloadend = () => {
+        const fileResult = reader.result;
+
         setSelectedFiles((prev) => {
           const updated = [...prev];
           updated[index] = file;
@@ -26,9 +32,17 @@ export default function FileInputWithPreview() {
         });
         setPreviewURLs((prev) => {
           const updated = [...prev];
-          updated[index] = reader.result;
+          updated[index] = fileResult;
           return updated;
         });
+
+        if (index === 0) {
+          setFavIconImg(fileResult);
+        } else if (index === 1) {
+          setLogoLightImg(fileResult);
+        } else if (index === 2) {
+          setLogoDarkImg(fileResult);
+        }
       };
 
       reader.readAsDataURL(file);
@@ -52,6 +66,14 @@ export default function FileInputWithPreview() {
     });
     if (fileInputRefs.current[index]) {
       fileInputRefs.current[index].value = "";
+    }
+
+    if (index === 0) {
+      setFavIconImg(null);
+    } else if (index === 1) {
+      setLogoLightImg(null);
+    } else if (index === 2) {
+      setLogoDarkImg(null);
     }
   };
 
